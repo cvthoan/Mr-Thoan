@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FashionStudio AI - Trợ lý Hình Ảnh & Content Đỉnh Cao</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "jszip": "https://aistudiocdn.com/jszip@^3.10.1"
+  }
+}
+</script>
+<style>
+    html {
+        background-color: #100303;
+    }
+    .tab-active-glow {
+        /* The glow effect */
+        box-shadow: 0 0 5px rgba(239, 68, 68, 0.7), 0 0 10px rgba(239, 68, 68, 0.7);
+        /* The animation */
+        animation: pulse-glow 2s infinite alternate;
+    }
+    @keyframes pulse-glow {
+        from {
+            box-shadow: 0 0 5px rgba(239, 68, 68, 0.6), 0 0 10px rgba(239, 68, 68, 0.6);
+        }
+        to {
+            box-shadow: 0 0 10px rgba(248, 113, 113, 0.8), 0 0 15px rgba(248, 113, 113, 0.8);
+        }
+    }
+    .sub-tab-active-glow {
+        box-shadow: 0 0 5px rgba(34, 211, 238, 0.7), 0 0 10px rgba(34, 211, 238, 0.7);
+        animation: pulse-glow-cyan 2s infinite alternate;
+        border-color: rgba(34, 211, 238, 0.7) !important;
+        background-color: rgba(34, 211, 238, 0.1);
+    }
+    @keyframes pulse-glow-cyan {
+        from {
+            box-shadow: 0 0 5px rgba(34, 211, 238, 0.6), 0 0 10px rgba(34, 211, 238, 0.6);
+        }
+        to {
+            box-shadow: 0 0 10px rgba(103, 232, 249, 0.8), 0 0 15px rgba(103, 232, 249, 0.8);
+        }
+    }
+    .video-mode-active {
+        background: linear-gradient(90deg, #ef4444, #10b981, #3b82f6, #ef4444);
+        background-size: 200% auto;
+        animation: gradient-move 3s linear infinite;
+        box-shadow: 0 0 8px rgba(239, 68, 68, 0.6), 0 0 15px rgba(16, 185, 129, 0.5);
+    }
+    @keyframes gradient-move {
+        to {
+            background-position: -200% center;
+        }
+    }
+    .tts-word-active {
+        /* A bright amber color for the currently spoken word */
+        color: #fbbf24; /* Corresponds to Tailwind's amber-400 */
+        transition: color 0.1s linear;
+    }
+    .tts-line-active {
+        background-color: rgba(251, 191, 36, 0.15); /* amber-400 with 15% opacity */
+        font-size: 1.1em; /* 10% larger */
+        transition: font-size 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        border-radius: 6px;
+        /* The following properties help contain the background nicely */
+        padding: 0.125rem 0.25rem;
+        margin: -0.125rem -0.25rem;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+    .resize-handle {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #999;
+        cursor: nwse-resize;
+        z-index: 20;
+        border-top-left-radius: 12px;
+        box-shadow: -1px -1px 3px rgba(0,0,0,0.2);
+    }
+    .resize-handle::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: 
+            radial-gradient(circle at 1px 1px, #555 1px, transparent 1px),
+            radial-gradient(circle at 4px 4px, #555 1px, transparent 1px);
+        background-size: 3px 3px;
+        bottom: 3px;
+        right: 3px;
+        opacity: 0.7;
+    }
+    .button-active-glow {
+        box-shadow: 0 0 5px rgba(20, 184, 166, 0.7), 0 0 10px rgba(20, 184, 166, 0.7); /* teal-500 */
+        animation: pulse-glow-teal 2s infinite alternate;
+    }
+    @keyframes pulse-glow-teal {
+        from {
+            box-shadow: 0 0 5px rgba(20, 184, 166, 0.6), 0 0 10px rgba(20, 184, 166, 0.6);
+        }
+        to {
+            box-shadow: 0 0 10px rgba(45, 212, 191, 0.8), 0 0 15px rgba(45, 212, 191, 0.8); /* teal-400 */
+        }
+    }
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-fade-in-up {
+        animation: fade-in-up 0.2s ease-out forwards;
+    }
+</style>
+</head>
+  <body class="">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
